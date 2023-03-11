@@ -29,7 +29,7 @@ $(function () {
     plannerDetails.push(plannerInfo);
 
     localStorage.setItem("plannerDetails", JSON.stringify(plannerDetails));
-    renderMessage();
+    //renderMessage();
   });
 
   function renderMessage() {
@@ -38,8 +38,35 @@ $(function () {
     for (var i = 0; i < plannerDetails.length; i++) {
       console.log(plannerDetails[i].timeDiv);
       console.log(plannerDetails[i].items);
+      let tagertDiv = $(`#${plannerDetails[i].timeDiv}`)
+        .children()[1]
+        .append(plannerDetails[i].items);
+      //console.log($(`#${plannerDetails[i].timeDiv}`).children().);
     }
   }
+
+  renderMessage();
+
+  function displayCorrectTimeBlock() {
+    let workingHours = ["09", "10", "11", "12", "13", "14", "15", "16", "17"];
+    let currentMomentTime = dayjs().format("HH");
+    for (var i = 0; i < workingHours.length; i++) {
+      let timeDifference =
+        parseInt(currentMomentTime) - parseInt(workingHours[i]);
+      console.log(timeDifference > 0);
+      if (timeDifference > 0) {
+        $(`#hour-${workingHours[i]}`).attr("class", "row time-block past");
+      } else if (timeDifference === 0) {
+        $(`#hour-${workingHours[i]}`).attr("class", "row time-block present");
+      } else {
+        $(`#hour-${workingHours[i]}`).attr("class", "row time-block future");
+      }
+    }
+
+    console.log(currentMomentTime);
+  }
+
+  displayCorrectTimeBlock();
 
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
