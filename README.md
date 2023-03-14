@@ -10,8 +10,7 @@ https://shiby-mathew.github.io/Work-Day-Scheduler/
 
 ```md
 A simple daily planner application that allows user to save events for each hour of the day
-(9am-5pm).
-This app will run in the browser and it features dynamically updated HTML along with CSS powered by jQuery.I used Day.js to work with date and time.
+(9am-5pm). This app will run in the browser and it features dynamically updated HTML along with CSS powered by jQuery.I used Day.js to work with date and time.
 ```
 
 ## User Story
@@ -42,7 +41,7 @@ THEN the saved events persist
 
 ## Code Snippet
 
-![Git Bash,.](./assets/images/)
+![Git Bash,.](./assets/images/code.PNG)
 
 ## Mock-Up
 
