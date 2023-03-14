@@ -1,5 +1,4 @@
 var saveButton = $(".saveBtn");
-// var textArea = document.querySelector("textarea");
 var currentDay = $("#currentDay");
 var msg = $(".message");
 
@@ -10,6 +9,7 @@ $(function () {
     var divId = $(this).parent().attr("id");
     var textAreaValue = $(this).parent().children().eq(1).val();
 
+    //storing the details in localstorage
     var plannerDetails =
       JSON.parse(localStorage.getItem("plannerDetails")) || [];
     var plannerInfo = {
@@ -20,6 +20,7 @@ $(function () {
     localStorage.setItem("plannerDetails", JSON.stringify(plannerDetails));
     displayMessage();
   });
+
   //Showing message values are stored in LocalStorage
   function displayMessage() {
     msg.attr("class", "message");
@@ -29,7 +30,8 @@ $(function () {
       msg.attr("class", "message hide");
     }, 1000);
   }
-  // Retriving data from localStrorage and display on textarea
+
+  // Retriving data from localStrorage and display in the textarea
   function renderMessage() {
     var plannerDetails =
       JSON.parse(localStorage.getItem("plannerDetails")) || [];
@@ -63,16 +65,16 @@ $(function () {
 
   //Showing current date and time in the header
 
-  function renderCurrentTime() {
+  function displayTime() {
     var time = dayjs();
     var newTime = time.format("D-MMMM-YYYY hh:mm:ss");
 
     currentDay.text(newTime);
   }
-  function renderCurrentTimeEverySecond() {
+  function displayTimeEverySecond() {
     setInterval(renderCurrentTime, 1000);
   }
 
-  renderCurrentTime();
-  renderCurrentTimeEverySecond();
+  displayTime();
+  displayTimeEverySecond();
 });
