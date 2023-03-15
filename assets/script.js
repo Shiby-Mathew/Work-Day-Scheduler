@@ -72,7 +72,7 @@ $(function () {
     currentDay.text(newTime);
   }
   function displayTimeEverySecond() {
-    setInterval(renderCurrentTime, 1000);
+    setInterval(displayTime, 1000);
   }
 
   displayTime();
