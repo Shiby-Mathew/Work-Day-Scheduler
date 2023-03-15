@@ -36,7 +36,7 @@ $(function () {
     var plannerDetails =
       JSON.parse(localStorage.getItem("plannerDetails")) || [];
     for (var i = 0; i < plannerDetails.length; i++) {
-      var targetDiv = $(`#${plannerDetails[i].timeDiv}`)
+      $(`#${plannerDetails[i].timeDiv}`)
         .children()[1]
         .append(plannerDetails[i].items);
     }
@@ -50,7 +50,7 @@ $(function () {
     for (var i = 0; i < workingHours.length; i++) {
       var timeDifference =
         parseInt(currentMomentTime) - parseInt(workingHours[i]);
-
+      //console.log(timeDifference );
       if (timeDifference > 0) {
         $(`#hour-${workingHours[i]}`).attr("class", "row time-block past");
       } else if (timeDifference === 0) {
